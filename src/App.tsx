@@ -7,7 +7,7 @@ import NoMatch from './views/NoMatch';
 import styled from 'styled-components';
 
 const AppWrapper = styled.div`
-color: #333;
+  color: #333;
 `
 
  function App() {
