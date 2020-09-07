@@ -4,7 +4,11 @@ import styled from 'styled-components';
 
 const TagsSelection = styled.section`
 background: #fff;
+flex-grow: 1;
 padding: 12px 16px;
+display:flex;
+flex-direction: column-reverse;
+align-items: flex-start;
   > ol{
     margin:0 -12px;
     > li{
@@ -125,18 +129,22 @@ flex-direction: column;
     }
   }
 `
+const MyLayout = styled(Layout)`
+display:flex;
+flex-direction: column;
+`
 
 function Money() {
   return (
-    <Layout>
+    <MyLayout >
       <TagsSelection>
+        <button>新增标签</button>
         <ol>
           <li>衣</li>
           <li>食</li>
           <li>住</li>
           <li>行</li>
         </ol>
-        <button>新增标签</button>
       </TagsSelection>
       <NotesSelection>
         <label>
@@ -171,7 +179,7 @@ function Money() {
         <button >.</button>
         </div>
       </NumberPadSelection>
-    </Layout>
+    </MyLayout>
   )
 }
 
