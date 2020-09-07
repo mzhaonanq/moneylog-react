@@ -1,11 +1,9 @@
 import React from "react";
-import {
-  HashRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from 'react-router-dom';
-import Layout from './components/Layout';
+import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+import Money from './views/Money';
+import Statistics from './views/Statistics';
+import Tags from './views/Tags';
+import NoMatch from './views/NoMatch';
 
 
 
@@ -13,7 +11,6 @@ import Layout from './components/Layout';
  function App() {
   return (
     <Router>
-
           <Switch>
             <Redirect from="/" exact to="/money" />
             <Route path="/tags">
@@ -29,39 +26,7 @@ import Layout from './components/Layout';
               <NoMatch />
             </Route>
           </Switch>
-
-
     </Router>
   );
-}
-
-function Money() {
-  return (
-    <Layout>
-      <h2>记账页面</h2>
-    </Layout>
-
-
-  )
-}
-
-function Tags() {
-  return(
-    <Layout>
-      <h2>标签页面</h2>
-    </Layout>
-  )
-}
-
-function Statistics() {
-  return (
-    <Layout>
-      <h2>数据页面</h2>
-    </Layout>
-    )
-}
-
-function NoMatch(){
-  return <div>当前页面不存在</div>
 }
 export default App
