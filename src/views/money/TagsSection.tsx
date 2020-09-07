@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import React from 'react';
 
-const TagsSection = styled.section`
+
+const _TagsSection = styled.section`
 background: #fff;
 flex-grow: 1;
 padding: 12px 16px;
@@ -27,4 +29,19 @@ align-items: flex-start;
   margin-top: 8px;
   }
 `
+
+const TagsSection: React.FunctionComponent=()=>{
+  return(
+  <_TagsSection>
+    <button>新增标签</button>
+    <ol>
+      <li>衣</li>
+      <li>食</li>
+      <li>住</li>
+      <li>行</li>
+    </ol>
+  </_TagsSection>
+  )
+}
+
 export {TagsSection}
