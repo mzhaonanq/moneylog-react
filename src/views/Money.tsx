@@ -2,7 +2,7 @@ import Layout from '../components/Layout';
 import React from 'react';
 import styled from 'styled-components';
 import {CategorySection} from './money/CategorySection';
-import {NotesSection} from './money/NotesSection';
+import {NoteSection} from './money/NoteSection';
 import {NumberPadSection} from './money/NumberPadSection';
 import {TagsSection} from './money/TagsSection';
 
@@ -16,7 +16,7 @@ function Money() {
   return (
     <MyLayout >
       <TagsSection/>
-      <NotesSection/>
+      <NoteSection/>
       <CategorySection/>
       <NumberPadSection/>
     </MyLayout>
