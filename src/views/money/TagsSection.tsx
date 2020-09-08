@@ -32,10 +32,14 @@ align-items: flex-start;
   margin-top: 8px;
   }
 `
+type Props ={
+  value: string[];
+  onChange: (value: string[])=>void
 
-const TagsSection: React.FunctionComponent=(props)=>{
+}
+const TagsSection: React.FunctionComponent<Props>=(props)=>{
   const [tags,setTags]=useState<string[]>(['衣','食','住','行'])
-  const [selectedTags,setSelectedTags]=useState<string[]>([])
+  const selectedTags = props.value
   const onAddTag =()=>{
     const tagName = window.prompt('新的标签名为')
     if(tagName!==null){
@@ -44,9 +48,9 @@ const TagsSection: React.FunctionComponent=(props)=>{
   }
   const onToggleTag=(tag: string)=>{
     if(selectedTags.indexOf(tag)>=0){
-      setSelectedTags(selectedTags?.filter(t=>t!==tag))
+      props.onChange(selectedTags?.filter(t=>t!==tag))
     }else{
-      setSelectedTags([...selectedTags,tag])
+      props.onChange([...selectedTags,tag])
     }
   }
   const getClass=(tag: string)=>selectedTags.indexOf(tag) >=0? 'selected':''
