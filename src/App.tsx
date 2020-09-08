@@ -17,7 +17,7 @@ const AppWrapper = styled.div`
       <Router>
         <Switch>
           <Redirect from="/" exact to="/money" />
-          <Route exact path="/tags/:tag" >
+          <Route exact path="/tags/:id" >
             <Tag />
           </Route>
           <Route exact path="/tags" >
