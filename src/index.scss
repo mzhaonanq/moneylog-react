@@ -17,7 +17,7 @@
   box-sizing: border-box;
 }
 
-ul,ol{
+ul,ol,li{
   list-style: none;
 }
 
@@ -50,4 +50,10 @@ button{
   content: '';
   display: block;
   clear: both;
+}
+
+.oneLine{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
