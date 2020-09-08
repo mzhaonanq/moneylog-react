@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, {useState} from 'react';
 
-const _CategorySection=styled.section`
+const Wrapper=styled.section`
   font-size: 24px;
   > ul{
   display:flex;
@@ -25,13 +25,22 @@ const _CategorySection=styled.section`
   }
 `
 const CategorySection: React.FunctionComponent =()=>{
+  const categoryMap = {'-':'支出','+':'收入'}
+  type Keys = keyof typeof categoryMap;
+  const [categoryList]=useState<Keys[]>(['-','+'])
+  const [category,setCategory]=useState('-')
+
   return(
-    <_CategorySection>
+    <Wrapper>
       <ul>
-        <li className='selected'>收入</li>
-        <li>支出</li>
+        {categoryList.map(c=>
+        <li className={category===c ? 'selected' : ''}
+            onClick={()=>{setCategory(c)}}
+          >{categoryMap[c]}
+          </li>
+        )}
       </ul>
-    </_CategorySection>
+    </Wrapper>
   )
 }
 export {CategorySection}
