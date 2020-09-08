@@ -35,7 +35,7 @@ align-items: flex-start;
 
 const TagsSection: React.FunctionComponent=(props)=>{
   const [tags,setTags]=useState<string[]>(['衣','食','住','行'])
-  const [selectedTags,setselectedTags]=useState<string[]>([])
+  const [selectedTags,setSelectedTags]=useState<string[]>([])
   const onAddTag =()=>{
     const tagName = window.prompt('新的标签名为')
     if(tagName!==null){
@@ -44,9 +44,9 @@ const TagsSection: React.FunctionComponent=(props)=>{
   }
   const onToggleTag=(tag: string)=>{
     if(selectedTags.indexOf(tag)>=0){
-      setselectedTags(selectedTags?.filter(t=>t!==tag))
+      setSelectedTags(selectedTags?.filter(t=>t!==tag))
     }else{
-      setselectedTags([...selectedTags,tag])
+      setSelectedTags([...selectedTags,tag])
     }
   }
   const getClass=(tag: string)=>selectedTags.indexOf(tag) >=0? 'selected':''

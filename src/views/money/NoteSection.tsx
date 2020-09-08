@@ -38,7 +38,6 @@ const NoteSection: React.FunctionComponent =()=>{
                ref={refInput}
                defaultValue={note}
                onBlur={onBlur}
-
         />
       </label>
     </Wrapper>
