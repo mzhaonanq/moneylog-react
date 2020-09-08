@@ -34,35 +34,35 @@ align-items: flex-start;
   }
 `
 type Props ={
-  value: string[];
-  onChange: (value: string[])=>void
+  value: number[];
+  onChange: (value: number[])=>void
 
 }
 const TagsSection: React.FunctionComponent<Props>=(props)=>{
   const {tags,setTags} =   useTags()
-  const selectedTags = props.value
+  const selectedTagIds = props.value
   const onAddTag =()=>{
     const tagName = window.prompt('新的标签名为')
     if(tagName!==null){
-      setTags(([...tags,tagName]))
+      setTags(([...tags,{id:Math.random(),name:tagName}]))
     }
   }
-  const onToggleTag=(tag: string)=>{
-    if(selectedTags.indexOf(tag)>=0){
-      props.onChange(selectedTags?.filter(t=>t!==tag))
+  const onToggleTag=(tagId: number)=>{
+    if(selectedTagIds.indexOf(tagId)>=0){
+      props.onChange(selectedTagIds?.filter(t=>t!==tagId))
     }else{
-      props.onChange([...selectedTags,tag])
+      props.onChange([...selectedTagIds,tagId])
     }
   }
-  const getClass=(tag: string)=>selectedTags.indexOf(tag) >=0? 'selected':''
+  const getClass=(tagId: number)=>selectedTagIds.indexOf(tagId) >=0? 'selected':''
   return(
   <Wrapper>
     <button onClick={onAddTag}>新增标签</button>
     <ol>
       {tags.map(tag=>
-        <li key={tag} onClick={()=>{onToggleTag(tag)}}
-        className={getClass(tag)}
-        >{tag}</li>
+        <li key={tag.id} onClick={()=>{onToggleTag(tag.id)}}
+        className={getClass(tag.id)}
+        >{tag.name}</li>
       )}
     </ol>
   </Wrapper>
