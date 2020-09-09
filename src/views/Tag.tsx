@@ -27,7 +27,7 @@ padding: 0 16px;
 margin-top: 8px;
 `
 
-const Tag: React.FunctionComponent = (props) => {
+const Tag: React.FunctionComponent = () => {
   const {findTag, updateTag, deleteTag} = useTags();
   let {id: idString} = useParams<Params>();
   const tag = findTag(parseInt(idString));
@@ -61,12 +61,5 @@ const Tag: React.FunctionComponent = (props) => {
       {tag ? tagContent(tag) : <Center>tag不存在</Center>}
     </Layout>
   );
-
-  return (
-    <div>
-      tag 不存在
-    </div>
-  );
-
 }
 export {Tag}
