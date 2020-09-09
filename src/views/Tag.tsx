@@ -5,6 +5,9 @@ import Layout from 'components/Layout';
 import Icon from '../components/Icon';
 import {Button} from '../components/Button';
 import styled from 'styled-components';
+import {Input} from '../components/Input';
+import {Center} from '../components/Center';
+import {Space} from '../components/Space';
 
 type Params = {
   id: string
@@ -18,6 +21,11 @@ line-height: 20px;
 padding: 14px;
 background: #ffffff;
 `
+const Wrapper = styled.div`
+background: #ffffff;
+padding: 0 16px;
+margin-top: 8px;
+`
 
 const Tag: React.FunctionComponent = (props) => {
   const {findTag} = useTags();
@@ -30,14 +38,17 @@ const Tag: React.FunctionComponent = (props) => {
         <span>编辑标签</span>
         <Icon/>
       </Topbar>
+      <Wrapper>
+      <Input label='标签名' type='text' placeholder="修改标签名" value={tag.name}/>
+    </Wrapper>
       <div>
-      <label>
-        <span>标签名</span>
-        <input type="text" placeholder='修改标签名'/>
-      </label>
-    </div>
-      <div>
-        <Button>删除标签</Button>
+        <Center>
+          <Space/>
+          <Space/>
+          <Space/>
+          <Button>删除标签</Button>
+        </Center>
+
       </div>
     </Layout>
   );
