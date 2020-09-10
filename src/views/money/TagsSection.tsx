@@ -39,7 +39,7 @@ type Props ={
   onChange: (value: number[])=>void
 
 }
-const TagsSection: React.FunctionComponent<Props>=(props)=>{
+const TagsSection: React.FunctionComponent<Props> =(props)=>{
   const {tags,setTags} =   useTags()
   const selectedTagIds = props.value
   const onAddTag =()=>{
