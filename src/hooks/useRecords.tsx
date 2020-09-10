@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useUpdate} from './useUpdate';
 
-type RecordItem = {
+export type RecordItem = {
   tagIds: number[]
   note: string
   category: '+' | '-'
@@ -29,7 +29,7 @@ export const useRecords = () => {
   };
   useUpdate(()=>{
     window.localStorage.setItem('records',JSON.stringify(records))
-  },[records])
+  },records)
 
   return {records, addRecord};
 };
