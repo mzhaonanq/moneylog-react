@@ -5,7 +5,7 @@ const Wrapper=styled.section`
   font-size: 24px;
   > ul{
   display:flex;
-  background: #c4c4c4;
+  
     > li{
     width: 50%;
     text-align:center;
@@ -39,7 +39,7 @@ const CategorySection: React.FunctionComponent<Props> =(props)=>{
       <ul>
         {categoryList.map(c=>
         <li key={c}
-            className={category===c ? 'selected' : ''}
+            className={c===category ? 'selected' : ''}
             onClick={()=>{props.onChange(c)}}
           >{categoryMap[c]}
           </li>
