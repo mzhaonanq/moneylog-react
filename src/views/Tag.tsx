@@ -31,6 +31,9 @@ const Tag: React.FunctionComponent = () => {
   const {findTag, updateTag, deleteTag} = useTags();
   let {id: idString} = useParams<Params>();
   const tag = findTag(parseInt(idString));
+  const onClick = ()=>{
+    window.history.back()
+  }
   const tagContent = (tag: { id: number; name: string }) => (<div>
     <Wrapper>
       <Input label='标签名' type='text'
@@ -54,7 +57,7 @@ const Tag: React.FunctionComponent = () => {
   return (
     <Layout>
       <Topbar>
-        <Icon name='left'/>
+        <Icon name='left' onClick={onClick} />
         <span>编辑标签</span>
         <Icon/>
       </Topbar>

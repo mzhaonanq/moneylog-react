@@ -77,8 +77,8 @@ function Statistics() {
                 <div className='amount'>
                   ￥{r.amount}
                 </div>
-                {/*{dayjs(r.createdAt).format('YYYY年MM月DD日')}*/}
-              </Item>;
+
+              </Item>
             })}
           </div>
         </div>
