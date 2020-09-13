@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import {RecordItem, useRecords} from '../hooks/useRecords';
 import {useTags} from '../hooks/useTags';
 import dayjs from 'dayjs';
+import {Link} from 'react-router-dom';
 
 const Wrapper = styled.div`
 background: #ffffff;
@@ -36,10 +37,10 @@ function Statistics() {
   const [category, setCategory] = useState<'-' | '+'>('-');
   const {records} = useRecords();
   const {getName} = useTags();
-  const hash: { [K: string]: RecordItem[] } = {}; // {'2020-05-11': [item, item], '2020-05-10': [item, item], '2020-05-12': [item, item, item, item]}
+  const hash: { [K: string]: RecordItem[] } = {};
   const selectedRecords = records.filter(r => r.category === category);
 
-  selectedRecords.map(r => {
+  selectedRecords.forEach(r => {
     const key = dayjs(r.createdAt).format('YYYY年MM月DD日');
     if (!(key in hash)) {
       hash[key] = [];
@@ -66,21 +67,23 @@ function Statistics() {
         </Header>
         <div>
           {records.map(r => {
-            return <Item key={r.createdAt}>
-              <div className="tags oneLine">
-                {r.tagIds
-                  .map(tagId => <span key={tagId}>{getName(tagId)}</span>)
-                  .reduce((result, span, index, array) =>
-                    result.concat(index < array.length - 1 ? [span, '，'] : [span]), [] as ReactNode[])
-                }
-              </div>
-              {r.note && <div className="note">
-                {r.note}
-              </div>}
-              <div className="amount">
-                ￥{r.amount}
-              </div>
-            </Item>;
+            return <Link key={r.createdAt} to={'/statistics/' + r.recordId}>
+              <Item >
+                <div className="tags oneLine">
+                  {r.tagIds
+                    .map(tagId => <span key={tagId}>{getName(tagId)}</span>)
+                    .reduce((result, span, index, array) =>
+                      result.concat(index < array.length - 1 ? [span, '，'] : [span]), [] as ReactNode[])
+                  }
+                </div>
+                {r.note && <div className="note">
+                  {r.note}
+                </div>}
+                <div className="amount">
+                  ￥{r.amount}
+                </div>
+              </Item>
+            </Link>;
           })}
         </div>
       </div>)}

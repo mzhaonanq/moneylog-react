@@ -21,8 +21,6 @@ const useTags=()=> {
   window.localStorage.setItem('tags', JSON.stringify(tags));
  }, tags);
  const findTag = (id: number) => tags.filter(tag => tag.id === id)[0];
- useEffect( ()=>{
- },[])
  const findTagIndex = (id: number) => {
   let result = -1;
   for (let i = 0; i < tags.length; i++) {
@@ -34,7 +32,7 @@ const useTags=()=> {
   return result;
  };
  const updateTag = (id: number, {name}: { name: string }) => {
-  setTags(tags.map(tag => tag.id === id ? {id, name} : tag));
+  setTags(tags.map(tag => tag.id === id ? {id:id, name:name} : tag));
  };
  const deleteTag = (id: number) => {
   setTags(tags.filter(tag => tag.id !== id));

@@ -9,9 +9,7 @@ import {Input} from '../components/Input';
 import {Center} from '../components/Center';
 import {Space} from '../components/Space';
 
-type Params = {
-  id: string
-}
+
 
 const Topbar = styled.header`
 display:flex;
@@ -26,6 +24,9 @@ background: #ffffff;
 padding: 0 16px;
 margin-top: 8px;
 `
+type Params = {
+  id: string
+}
 
 const Tag: React.FunctionComponent = () => {
   const {findTag, updateTag, deleteTag} = useTags();

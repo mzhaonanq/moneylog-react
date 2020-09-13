@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import {useUpdate} from './useUpdate';
+import {createId} from '../lib/createId';
 
 export type RecordItem = {
   tagIds: number[]
@@ -7,8 +8,9 @@ export type RecordItem = {
   category: '+' | '-'
   amount: number
   createdAt: string//ISO 8601
+  recordId: number
 }
-type newRecordItem = Omit<RecordItem, 'createdAt'>
+type newRecordItem = Omit<RecordItem, 'createdAt'| 'recordId'>
 
 export const useRecords = () => {
   const [records, setRecords] = useState<RecordItem[]>([]);
@@ -24,13 +26,32 @@ export const useRecords = () => {
       alert('请选择标签');
       return false;
     }
-    const record = {...newRecord, createdAt: (new Date()).toISOString()};
+    const record = {...newRecord, createdAt: (new Date()).toISOString(),recordId: createId()};
     setRecords([...records, record]);
     return true
   };
+  const deleteRecord =(id: number)=>{
+    setRecords(records.filter(record =>record.recordId !==id ));
+  }
   useUpdate(()=>{
     window.localStorage.setItem('records',JSON.stringify(records))
   },records)
 
-  return {records, addRecord};
+  const findRecord = (id: number) => records.filter(record => record.recordId === id)[0];
+
+  // const findRecordIndex = (id: number) => {
+  //   let result = -1;
+  //   for (let i = 0; i < tags.length; i++) {
+  //     if (tags[i].id === id) {
+  //       result = i;
+  //       break;
+  //     }
+  //   }
+  //   return result;
+  // };
+
+  // const updateRecord = (id: number, {name}: { name: string }) => {
+  //   setRecords(records.map(record => record.recordId === id ? {id, name} : record));
+  // };
+  return {records, addRecord, deleteRecord,findRecord};
 };

@@ -6,6 +6,7 @@ import Tags from './views/Tags';
 import NoMatch from './views/NoMatch';
 import styled from 'styled-components';
 import {Tag} from './views/Tag';
+import {Record} from 'views/Record'
 
 const AppWrapper = styled.div`
   color: #333;
@@ -25,6 +26,9 @@ const AppWrapper = styled.div`
           </Route>
           <Route exact path="/statistics">
             <Statistics />
+          </Route>
+          <Route exact path="/statistics/:id">
+            <Record />
           </Route>
           <Route exact path="/money">
             <Money />
