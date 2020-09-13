@@ -17,7 +17,8 @@ background: #ffffff;
 font-size: 18px;
 line-height: 1.5;
 padding: 10px 16px;
- border-bottom:1px solid lightcoral;
+box-shadow: 0 0 3px rgba(255,255,255,0.3);
+margin-bottom: 4px;
   > .note{
   margin-right: auto;
   margin-left: 16px;

@@ -12,6 +12,9 @@ const Label = styled.label`
       display:block;
       width: 100%;
       height: 44px;
+        @media(max-height: 570px){
+           height:36px;
+    }
       background:none;
       border:none;
     }

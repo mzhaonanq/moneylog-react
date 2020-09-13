@@ -6,6 +6,9 @@ const Wrapper =styled.section`
   background: #f5f5f5;
   padding:14px 16px;
   font-size: 14px;
+    @media(max-height: 570px){
+    padding: 8px 16px;
+    }
 `
 type Props ={
   value: string;

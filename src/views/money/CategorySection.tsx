@@ -11,6 +11,9 @@ const Wrapper=styled.section`
     text-align:center;
     padding:16px 0;
     position: relative;
+    @media(max-height: 570px){
+    padding: 10px 0;
+    }
     &.selected::after{
       content:'';
       display: block;
@@ -39,10 +42,10 @@ const CategorySection: React.FunctionComponent<Props> =(props)=>{
       <ul>
         {categoryList.map(c=>
         <li key={c}
-            className={c===category ? 'selected' : ''}
-            onClick={()=>{props.onChange(c)}}
-          >{categoryMap[c]}
-          </li>
+            className={category === c ? 'selected' : ''}
+            onClick={() => {props.onChange(c);}}
+        >{categoryMap[c]}
+        </li>
         )}
       </ul>
     </Wrapper>

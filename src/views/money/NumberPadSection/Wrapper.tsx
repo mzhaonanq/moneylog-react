@@ -7,6 +7,10 @@ flex-direction: column;
   background:#fff;
   font-size: 36px;
   line-height: 72px;
+    @media(max-height: 570px){
+    line-height: 56px;
+    }
+   
   text-align: right;
   padding: 0 16px;
   box-shadow: inset 0 -5px 5px -5px rgba(0,0,0,0.25),
@@ -57,9 +61,9 @@ flex-direction: column;
     }
     @media(max-height: 570px){
     > button {
-    height: 40px;
+    height: 46px;
       &.ok{
-      height: 80px;
+      height: 92px;
       }
     }
     }
