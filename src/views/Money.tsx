@@ -54,7 +54,7 @@ function Money() {
                        onChange={category => onChange({category})}/>
                    </Wrapper>
       <NumberPadSection value={selected.amount}
-                        onChange={amount => onChange({amount})}
+                        onChange={(amount) => onChange({amount})}
                         onOk={() => {submit();}}
       />
     </MyLayout>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Wrapper} from './NumberPadSection/Wrapper';
 import {generateOutput} from './NumberPadSection/generateOutput';
 
@@ -9,8 +9,8 @@ type Props ={
 }
 
 const NumberPadSection: React.FunctionComponent<Props>=(props)=>{
-  // const output = props.value.toString()
   const [output,_setOutput] = useState(props.value.toString())
+  useEffect(()=>_setOutput(props.value.toString()),[props.value])
   const setOutput=(output: string)=>{
     let newOutput: string
     if(output.length>16){
