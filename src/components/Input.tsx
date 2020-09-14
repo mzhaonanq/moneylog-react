@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const Label = styled.label`
   display: flex;
   align-items: center;
+  
     >span{
       margin-right: 16px;
       white-space: nowrap;
@@ -15,8 +16,7 @@ const Label = styled.label`
         @media(max-height: 570px){
            height:36px;
     }
-      background:none;
-      border:none;
+     
     }
 `
 type  Props = {

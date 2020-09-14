@@ -9,8 +9,6 @@ import {Center} from '../components/Center';
 import {Space} from '../components/Space';
 
 
-
-
 const TagList = styled.ol`
 font-size: 16px;
 background: #fff;
@@ -27,9 +25,8 @@ background: #fff;
   }
 `
 
-
 function Tags() {
-  const {tags,addTag} =   useTags()
+  const {tags, addTag} = useTags();
   return(
     <Layout>
       <TagList>
@@ -49,7 +46,6 @@ function Tags() {
       <Button onClick={addTag}>新增标签</Button>
       </Center>
     </Layout>
-
   )
 }
 export default Tags

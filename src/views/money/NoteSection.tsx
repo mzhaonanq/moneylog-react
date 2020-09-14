@@ -10,6 +10,11 @@ const Wrapper =styled.section`
     padding: 8px 16px;
     }
 `
+const NoteInput =  styled(Input)`
+border: none;
+background: #f5f5f5;
+`
+
 type Props ={
   value: string;
   onChange: (value: string)=>void
@@ -21,7 +26,7 @@ const NoteSection: React.FunctionComponent<Props> =(props)=>{
     }
   return(
     <Wrapper>
-      <Input label='备注' type='text' placeholder='写点啥吧' defaultValue={note} onChange={onChange} />
+      <NoteInput label='备注' type='text' placeholder='写点啥吧' defaultValue={note} onChange={onChange} />
     </Wrapper>
   )
 }

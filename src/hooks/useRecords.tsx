@@ -17,6 +17,10 @@ export const useRecords = () => {
   useEffect(()=>{
     setRecords(JSON.parse(window.localStorage.getItem('records')||'[]'))
   },[])
+  useUpdate(()=>{
+    window.localStorage.setItem('records',JSON.stringify(records))
+  },records)
+  const findRecord = (id: number) => records.filter(record => record.recordId === id)[0];
   const addRecord = (newRecord: newRecordItem) => {
     if (newRecord.amount <= 0) {
       alert('请输入金额');
@@ -32,26 +36,13 @@ export const useRecords = () => {
   };
   const deleteRecord =(id: number)=>{
     setRecords(records.filter(record =>record.recordId !==id ));
+    window.history.back()
   }
-  useUpdate(()=>{
-    window.localStorage.setItem('records',JSON.stringify(records))
-  },records)
-
-  const findRecord = (id: number) => records.filter(record => record.recordId === id)[0];
-
-  // const findRecordIndex = (id: number) => {
-  //   let result = -1;
-  //   for (let i = 0; i < tags.length; i++) {
-  //     if (tags[i].id === id) {
-  //       result = i;
-  //       break;
-  //     }
-  //   }
-  //   return result;
-  // };
-
-  // const updateRecord = (id: number, {name}: { name: string }) => {
-  //   setRecords(records.map(record => record.recordId === id ? {id, name} : record));
-  // };
-  return {records, addRecord, deleteRecord,findRecord};
+  const updateRecordAmount=(id: number, amount: number)=>{
+    setRecords(records.map(record=>record.recordId===id? {...record,amount: amount} : record))
+  }
+  const updateRecordNote=(id: number,note: string)=>{
+    setRecords(records.map(record=>record.recordId===id? {...record,note: note} : record))
+  }
+  return {records, addRecord, deleteRecord,findRecord,updateRecordAmount,updateRecordNote};
 };

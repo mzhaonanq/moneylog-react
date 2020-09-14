@@ -31,9 +31,10 @@ type Props ={
   value: '-'|'+',
   onChange: (value: '-'|'+')=>void
 }
+export const categoryMap = {'-':'支出','+':'收入'}
 
 const CategorySection: React.FunctionComponent<Props> =(props)=>{
-  const categoryMap = {'-':'支出','+':'收入'}
+
   type Keys = keyof typeof categoryMap;
   const [categoryList]=useState<Keys[]>(['-','+'])
   const category = props.value

@@ -1,5 +1,5 @@
 import React from 'react';
-import {useTags} from 'hooks/useTags';
+import {TagItem, useTags} from 'hooks/useTags';
 import {useParams} from 'react-router-dom';
 import Layout from 'components/Layout';
 import Icon from '../components/Icon';
@@ -24,6 +24,10 @@ background: #ffffff;
 padding: 0 16px;
 margin-top: 8px;
 `
+const TagInput = styled(Input)`
+border: none;
+`
+
 type Params = {
   id: string
 }
@@ -35,9 +39,9 @@ const Tag: React.FunctionComponent = () => {
   const onClick = ()=>{
     window.history.back()
   }
-  const tagContent = (tag: { id: number; name: string }) => (<div>
+  const tagContent = (tag: TagItem) => (<div>
     <Wrapper>
-      <Input label='标签名' type='text'
+      <TagInput label='标签名' type='text'
              placeholder="修改标签名"
              value={tag.name}
              onChange={(e) => {
